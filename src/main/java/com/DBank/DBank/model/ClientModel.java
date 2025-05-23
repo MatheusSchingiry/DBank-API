@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "tb_client")
-public class Client {
+public class ClientModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
