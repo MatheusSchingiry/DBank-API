@@ -20,6 +20,12 @@ public class ClientService {
         this.mapper = mapper;
     }
 
+    public ClientDTO add(ClientDTO dto){
+        ClientModel model = mapper.toModel(dto);
+        repository.save(model);
+        return mapper.toDTO(model);
+    }
+
     public ClientDTO list(String email){
         return repository.findByEmail(email)
                 .map(mapper::toDTO)
