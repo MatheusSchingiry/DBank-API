@@ -1,13 +1,10 @@
 package com.DBank.DBank.service;
 
-
 import com.DBank.DBank.dto.ClientDTO;
 import com.DBank.DBank.mapper.ClientMapper;
 import com.DBank.DBank.model.ClientModel;
 import com.DBank.DBank.repository.ClientRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class ClientService {
@@ -48,7 +45,7 @@ public class ClientService {
         return mapper.toDTO(updateModel);
     }
 
-    public void remove(String id){
+    public void delete(String id){
         repository.deleteById(id);
     }
 }

@@ -3,9 +3,9 @@ package com.DBank.DBank.mapper;
 import com.DBank.DBank.dto.ClientDTO;
 import com.DBank.DBank.model.ClientModel;
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
+@Component
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
 
