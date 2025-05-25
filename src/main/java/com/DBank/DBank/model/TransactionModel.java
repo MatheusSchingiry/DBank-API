@@ -1,26 +1,35 @@
 package com.DBank.DBank.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_transaction")
 public class TransactionModel {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
+    @ManyToOne()
+    @JoinColumn(name = "client_sender_id")
     private ClientModel sender;
 
+    @ManyToOne()
+    @JoinColumn(name = "client_recipient_id")
     private ClientModel recipientClient;
 
+    @ManyToOne()
+    @JoinColumn(name = "enterprise_recipient_id")
     private EnterpriseModel recipientEnterprise;
-
-    private double amount;
 
     public TransactionModel() {
     }
 
-    public TransactionModel(String id, ClientModel sender, ClientModel recipientClient, EnterpriseModel recipientEnterprise, double amount) {
+    public TransactionModel(String id, ClientModel sender, ClientModel recipientClient, EnterpriseModel recipientEnterprise) {
         this.id = id;
         this.sender = sender;
         this.recipientClient = recipientClient;
         this.recipientEnterprise = recipientEnterprise;
-        this.amount = amount;
     }
 
     public String getId() {
@@ -53,13 +62,5 @@ public class TransactionModel {
 
     public void setRecipientEnterprise(EnterpriseModel recipientEnterprise) {
         this.recipientEnterprise = recipientEnterprise;
-    }
-
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
     }
 }

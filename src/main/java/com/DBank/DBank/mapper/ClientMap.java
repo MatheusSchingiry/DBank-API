@@ -16,6 +16,8 @@ public class ClientMap {
         model.setEmail(dto.getEmail());
         model.setPassword(dto.getPassword());
         model.setAmount(dto.getAmount());
+        model.setTransactionsSender(dto.getTransactionsSender());
+        model.setTransactionsRecipient(dto.getTransactionsRecipient());
 
         return model;
     }
@@ -29,6 +31,8 @@ public class ClientMap {
         dto.setEmail(model.getEmail());
         dto.setPassword(model.getPassword());
         dto.setAmount(model.getAmount());
+        dto.setTransactionsSender(model.getTransactionsSender());
+        dto.setTransactionsRecipient(model.getTransactionsRecipient());
 
         return dto;
     }

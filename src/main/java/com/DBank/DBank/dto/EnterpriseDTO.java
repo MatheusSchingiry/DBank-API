@@ -1,8 +1,11 @@
 package com.DBank.DBank.dto;
 
+import com.DBank.DBank.model.TransactionModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,4 +23,6 @@ public class EnterpriseDTO {
     private String password;
 
     private double amount;
+
+    private List<TransactionModel> transactionsRecipient;
 }

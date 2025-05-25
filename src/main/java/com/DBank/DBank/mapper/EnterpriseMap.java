@@ -16,6 +16,7 @@ public class EnterpriseMap {
         model.setEmail(dto.getEmail());
         model.setPassword(dto.getPassword());
         model.setAmount(dto.getAmount());
+        model.setTransactionsRecipient(dto.getTransactionsRecipient());
 
         return model;
     }
@@ -29,6 +30,7 @@ public class EnterpriseMap {
         dto.setEmail(model.getEmail());
         dto.setPassword(model.getPassword());
         dto.setAmount(model.getAmount());
+        dto.setTransactionsRecipient(model.getTransactionsRecipient());
 
         return dto;
     }

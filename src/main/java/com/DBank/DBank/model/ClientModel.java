@@ -3,9 +3,9 @@ package com.DBank.DBank.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_client")
@@ -32,16 +32,24 @@ public class ClientModel {
     @NotNull
     private double amount;
 
+    @OneToMany(mappedBy = "client_sender", cascade = CascadeType.ALL)
+    private List<TransactionModel> transactionsSender = new ArrayList<>();
+
+    @OneToMany(mappedBy = "client_recipient", cascade = CascadeType.ALL)
+    private List<TransactionModel> transactionsRecipient = new ArrayList<>();
+
     public ClientModel() {
     }
 
-    public ClientModel(String id, String name, String register, String email, String password, double amount) {
+    public ClientModel(String id, String name, String register, String email, String password, double amount, List<TransactionModel> transactionsSender, List<TransactionModel> transactionsRecipient) {
         this.id = id;
         this.name = name;
         this.register = register;
         this.email = email;
         this.password = password;
         this.amount = amount;
+        this.transactionsSender = transactionsSender;
+        this.transactionsRecipient = transactionsRecipient;
     }
 
     public String getId() {
@@ -90,5 +98,21 @@ public class ClientModel {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public List<TransactionModel> getTransactionsSender() {
+        return transactionsSender;
+    }
+
+    public void setTransactionsSender(List<TransactionModel> transactionsSender) {
+        this.transactionsSender = transactionsSender;
+    }
+
+    public List<TransactionModel> getTransactionsRecipient() {
+        return transactionsRecipient;
+    }
+
+    public void setTransactionsRecipient(List<TransactionModel> transactionsRecipient) {
+        this.transactionsRecipient = transactionsRecipient;
     }
 }
