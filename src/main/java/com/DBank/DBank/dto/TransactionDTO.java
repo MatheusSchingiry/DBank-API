@@ -15,7 +15,15 @@ public class TransactionDTO {
 
     private ClientModel sender;
 
+    private String senderEmail;
+
     private ClientModel recipientClient;
 
     private EnterpriseModel recipientEnterprise;
+
+    private String recipientEmail;
+
+    private boolean authorization;
+
+    private double amount;
 }

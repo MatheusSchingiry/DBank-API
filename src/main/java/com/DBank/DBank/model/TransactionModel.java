@@ -1,8 +1,16 @@
 package com.DBank.DBank.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "tb_transaction")
 public class TransactionModel {
 
@@ -14,6 +22,8 @@ public class TransactionModel {
     @JoinColumn(name = "client_sender_id")
     private ClientModel sender;
 
+    private String senderEmail;
+
     @ManyToOne()
     @JoinColumn(name = "client_recipient_id")
     private ClientModel recipientClient;
@@ -22,45 +32,9 @@ public class TransactionModel {
     @JoinColumn(name = "enterprise_recipient_id")
     private EnterpriseModel recipientEnterprise;
 
-    public TransactionModel() {
-    }
+    private String recipientEmail;
 
-    public TransactionModel(String id, ClientModel sender, ClientModel recipientClient, EnterpriseModel recipientEnterprise) {
-        this.id = id;
-        this.sender = sender;
-        this.recipientClient = recipientClient;
-        this.recipientEnterprise = recipientEnterprise;
-    }
+    private boolean authorization;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public ClientModel getSender() {
-        return sender;
-    }
-
-    public void setSender(ClientModel sender) {
-        this.sender = sender;
-    }
-
-    public ClientModel getRecipientClient() {
-        return recipientClient;
-    }
-
-    public void setRecipientClient(ClientModel recipientClient) {
-        this.recipientClient = recipientClient;
-    }
-
-    public EnterpriseModel getRecipientEnterprise() {
-        return recipientEnterprise;
-    }
-
-    public void setRecipientEnterprise(EnterpriseModel recipientEnterprise) {
-        this.recipientEnterprise = recipientEnterprise;
-    }
+    private double amount;
 }
