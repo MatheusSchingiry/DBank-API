@@ -19,21 +19,22 @@ public class TransactionModel {
     private String id;
 
     @ManyToOne()
-    @JoinColumn(name = "client_sender_id")
+    @JoinColumn(name = "senderClient_id")
     private ClientModel sender;
 
     private String senderEmail;
 
     @ManyToOne()
-    @JoinColumn(name = "client_recipient_id")
+    @JoinColumn(name = "recipientClient_id")
     private ClientModel recipientClient;
 
     @ManyToOne()
-    @JoinColumn(name = "enterprise_recipient_id")
+    @JoinColumn(name = "recipientEnterprise_id")
     private EnterpriseModel recipientEnterprise;
 
     private String recipientEmail;
 
+    @Column(name = "is_authorization")
     private boolean authorization;
 
     private double amount;

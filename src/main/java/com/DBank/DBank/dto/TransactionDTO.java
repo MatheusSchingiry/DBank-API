@@ -13,13 +13,13 @@ public class TransactionDTO {
 
     private String id;
 
-    private ClientModel sender;
+    private String sender;
 
     private String senderEmail;
 
-    private ClientModel recipientClient;
+    private String recipientClient;
 
-    private EnterpriseModel recipientEnterprise;
+    private String recipientEnterprise;
 
     private String recipientEmail;
 

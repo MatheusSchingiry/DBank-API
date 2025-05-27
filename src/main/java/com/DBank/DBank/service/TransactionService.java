@@ -26,17 +26,18 @@ public class TransactionService {
     }
 
     public TransactionDTO Operation(TransactionDTO dto){
+        validationOperation(dto);
+
         TransactionModel model = mapper.toModel(dto);
-        validationOperation(model);
         model = repository.save(model);
 
         isValidToken(dto.isAuthorization());
-        transfer(model);
+        transfer(dto);
 
         return mapper.toDTO(model);
     }
 
-    public void validationOperation(TransactionModel model){
+    public void validationOperation(TransactionDTO model){
         validatorSender(model);
         validatorRecipient(model);
     }
@@ -47,44 +48,49 @@ public class TransactionService {
         }
     }
 
-    public void validatorSender(TransactionModel model){
-        ClientModel existClient = clientRepository.findById(model.getSender().getId()).orElseThrow(() -> new RuntimeException("Client not Found"));
+    public void validatorSender(TransactionDTO model){
+        ClientModel existClient = clientRepository.findById(model.getSender()).orElseThrow(() -> new RuntimeException("Client not Found"));
         isEmailClient(existClient, model);
         isHaveBalance(existClient, model);
     }
 
-    public void isEmailClient(ClientModel existClient, TransactionModel model) {
+    public void isEmailClient(ClientModel existClient, TransactionDTO model) {
+        System.out.println("Exist Client: " +existClient.getEmail());
+        System.out.println("Model: " +model.getSenderEmail());
         if (existClient.getEmail().equals(model.getSenderEmail())) { return; }
         else { throw(new RuntimeException("Enterprise cannot make Transfer")); }
     }
 
-    public void isHaveBalance(ClientModel existClient, TransactionModel model) {
+    public void isHaveBalance(ClientModel existClient, TransactionDTO model) {
         if (existClient.getAmount() >= model.getAmount()) { return; }
         else { throw (new RuntimeException("Insufficient Balance")); }
     }
 
-    public void validatorRecipient(TransactionModel model){
+    public void validatorRecipient(TransactionDTO model){
         if (model.getRecipientEnterprise() == null){
-            ClientModel existClient = clientRepository.findById(model.getRecipientClient().getId()).orElseThrow(() -> new RuntimeException("Client not Found"));
+            ClientModel existClient = clientRepository.findById(model.getRecipientClient()).orElseThrow(() -> new RuntimeException("Client not Found"));
         }
         else {
-            EnterpriseModel existEnterprise = enterpriseRepository.findById(model.getRecipientEnterprise().getId())
+            EnterpriseModel existEnterprise = enterpriseRepository.findById(model.getRecipientEnterprise())
                     .orElseThrow(() -> new RuntimeException("Enterprise not Found"));
         }
     }
 
-    public void transfer(TransactionModel model){
-        ClientModel sender = clientRepository.findById(model.getSender().getId()).orElseThrow(() -> new RuntimeException("Client not Found"));
+    public void transfer(TransactionDTO model){
+        ClientModel sender = clientRepository.findById(model.getSender()).orElseThrow(() -> new RuntimeException("Client not Found"));
         sender.setAmount(sender.getAmount() - model.getAmount());
+        clientRepository.save(sender);
 
         if (model.getRecipientEnterprise() == null){
-            ClientModel existClient = clientRepository.findById(model.getRecipientClient().getId()).orElseThrow(() -> new RuntimeException("Client not Found"));
+            ClientModel existClient = clientRepository.findById(model.getRecipientClient()).orElseThrow(() -> new RuntimeException("Client not Found"));
             existClient.setAmount(existClient.getAmount() + model.getAmount());
+            clientRepository.save(existClient);
         }
         else {
-            EnterpriseModel existEnterprise = enterpriseRepository.findById(model.getRecipientEnterprise().getId())
+            EnterpriseModel existEnterprise = enterpriseRepository.findById(model.getRecipientEnterprise())
                     .orElseThrow(() -> new RuntimeException("Enterprise not Found"));
             existEnterprise.setAmount(existEnterprise.getAmount() + model.getAmount());
+            enterpriseRepository.save(existEnterprise);
         }
     }
 }

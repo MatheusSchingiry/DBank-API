@@ -2,21 +2,47 @@ package com.DBank.DBank.mapper;
 
 import com.DBank.DBank.dto.EnterpriseDTO;
 import com.DBank.DBank.dto.TransactionDTO;
+import com.DBank.DBank.model.ClientModel;
 import com.DBank.DBank.model.EnterpriseModel;
 import com.DBank.DBank.model.TransactionModel;
+import com.DBank.DBank.repository.ClientRepository;
+import com.DBank.DBank.repository.TransactionRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class TransactionMap {
 
-    public TransactionModel toModel(TransactionDTO dto){
+    private final ClientRepository repository;
+
+    public TransactionMap(ClientRepository repository) {
+        this.repository = repository;
+    }
+
+    public TransactionModel toModel(TransactionDTO dto) {
         TransactionModel model = new TransactionModel();
 
         model.setId(dto.getId());
-        model.setSender(dto.getSender());
+
+        if (dto.getSender() != null) {
+            ClientModel sender = repository.findById(dto.getSender())
+                    .orElseThrow(() -> new RuntimeException("Sender not found"));
+            model.setSender(sender);
+        }
+
         model.setSenderEmail(dto.getSenderEmail());
-        model.setRecipientClient(dto.getRecipientClient());
-        model.setRecipientEnterprise(dto.getRecipientEnterprise());
+
+        if (dto.getRecipientClient() != null) {
+            ClientModel recipientClient = new ClientModel();
+            recipientClient.setId(dto.getRecipientClient());
+            model.setRecipientClient(recipientClient);
+        }
+
+        if (dto.getRecipientEnterprise() != null) {
+            EnterpriseModel recipientEnterprise = new EnterpriseModel();
+            recipientEnterprise.setId(dto.getRecipientEnterprise());
+            model.setRecipientEnterprise(recipientEnterprise);
+        }
+
         model.setRecipientEmail(dto.getRecipientEmail());
         model.setAuthorization(dto.isAuthorization());
         model.setAmount(dto.getAmount());
@@ -28,10 +54,10 @@ public class TransactionMap {
         TransactionDTO dto = new TransactionDTO();
 
         dto.setId(model.getId());
-        dto.setSender(model.getSender());
+        dto.setSender(model.getSender() != null ? model.getSender().getId() : null);
         dto.setSenderEmail(model.getSenderEmail());
-        dto.setRecipientClient(model.getRecipientClient());
-        dto.setRecipientEnterprise(model.getRecipientEnterprise());
+        dto.setRecipientClient(model.getRecipientClient() != null ? model.getRecipientClient().getId() : null);
+        dto.setRecipientEnterprise(model.getRecipientEnterprise() != null ? model.getRecipientEnterprise().getId() : null);
         dto.setRecipientEmail(model.getRecipientEmail());
         dto.setAuthorization(model.isAuthorization());
         dto.setAmount(model.getAmount());

@@ -40,6 +40,6 @@ public class EnterpriseModel {
     @NotNull
     private double amount;
 
-    @OneToMany(mappedBy = "client_recipient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipientEnterprise", cascade = CascadeType.ALL)
     private List<TransactionModel> transactionsRecipient = new ArrayList<>();
 }

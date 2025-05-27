@@ -38,9 +38,9 @@ public class ClientModel {
     @NotNull
     private double amount;
 
-    @OneToMany(mappedBy = "client_sender", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
     private List<TransactionModel> transactionsSender = new ArrayList<>();
 
-    @OneToMany(mappedBy = "client_recipient", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "recipientClient", cascade = CascadeType.ALL)
     private List<TransactionModel> transactionsRecipient = new ArrayList<>();
 }
