@@ -7,6 +7,8 @@ import com.DBank.DBank.model.EnterpriseModel;
 import com.DBank.DBank.repository.EnterpriseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class EnterpiseService {
 
@@ -31,7 +33,7 @@ public class EnterpiseService {
                 .orElseThrow(() -> new RuntimeException("Email not found"));
     }
 
-    public EnterpriseDTO edit(String id, EnterpriseDTO dto){
+    public EnterpriseDTO edit(UUID id, EnterpriseDTO dto){
         EnterpriseModel model = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Email not found"));
 
@@ -47,7 +49,7 @@ public class EnterpiseService {
         return mapper.toDTO(editUser);
     }
 
-    public void delete(String id){
+    public void delete(UUID id){
         repository.deleteById(id);
     }
 }

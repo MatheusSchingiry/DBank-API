@@ -5,6 +5,8 @@ import com.DBank.DBank.service.EnterpiseService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/enterprise")
 public class EnterpriseController {
@@ -26,10 +28,10 @@ public class EnterpriseController {
     }
 
     @PutMapping("/edit/{id}")
-    public EnterpriseDTO edit(@PathVariable String id, @Valid @RequestBody EnterpriseDTO dto){
+    public EnterpriseDTO edit(@PathVariable UUID id, @Valid @RequestBody EnterpriseDTO dto){
         return service.edit(id, dto);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable String id){ service.delete(id); }
+    public void delete(@PathVariable UUID id){ service.delete(id); }
 }

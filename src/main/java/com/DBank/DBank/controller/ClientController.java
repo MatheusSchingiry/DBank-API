@@ -5,6 +5,8 @@ import com.DBank.DBank.service.ClientService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/client")
 public class ClientController {
@@ -26,10 +28,10 @@ public class ClientController {
     }
 
     @PutMapping("/edit/{id}")
-    public ClientDTO edit(@PathVariable String id, @Valid @RequestBody ClientDTO dto){
+    public ClientDTO edit(@PathVariable UUID id, @Valid @RequestBody ClientDTO dto){
         return service.edit(id, dto);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable String id){ service.delete(id);}
+    public void delete(@PathVariable UUID id){ service.delete(id);}
 }

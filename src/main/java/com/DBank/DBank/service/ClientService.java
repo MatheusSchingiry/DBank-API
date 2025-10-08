@@ -7,6 +7,8 @@ import com.DBank.DBank.model.ClientModel;
 import com.DBank.DBank.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class ClientService {
 
@@ -30,7 +32,7 @@ public class ClientService {
                 .orElseThrow(() -> new RuntimeException("Client not found"));
     }
 
-    public ClientDTO edit(String id, ClientDTO dto){
+    public ClientDTO edit(UUID id, ClientDTO dto){
         ClientModel model = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Client not found"));
 
@@ -46,7 +48,7 @@ public class ClientService {
         return mapper.toDTO(updateModel);
     }
 
-    public void delete(String id){
+    public void delete(UUID id){
         repository.deleteById(id);
     }
 }

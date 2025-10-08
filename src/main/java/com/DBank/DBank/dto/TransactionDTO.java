@@ -1,25 +1,25 @@
 package com.DBank.DBank.dto;
 
-import com.DBank.DBank.model.ClientModel;
-import com.DBank.DBank.model.EnterpriseModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.UUID;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TransactionDTO {
 
-    private String id;
+    private UUID id;
 
-    private String sender;
+    private UUID sender;
 
     private String senderEmail;
 
-    private String recipientClient;
+    private UUID recipientClient;
 
-    private String recipientEnterprise;
+    private UUID recipientEnterprise;
 
     private String recipientEmail;
 
