@@ -1,4 +1,4 @@
-package com.DBank.DBank.mapper;
+package com.DBank.DBank.Mapper;
 
 import com.DBank.DBank.DTO.ClientDTO;
 import com.DBank.DBank.Model.ClientModel;

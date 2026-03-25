@@ -1,7 +1,7 @@
 package com.DBank.DBank.service;
 
 import com.DBank.DBank.DTO.ClientDTO;
-import com.DBank.DBank.mapper.ClientMap;
+import com.DBank.DBank.Mapper.ClientMapper;
 import com.DBank.DBank.Model.ClientModel;
 import com.DBank.DBank.repository.ClientRepository;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,9 @@ import java.util.UUID;
 public class ClientService {
 
     private final ClientRepository repository;
-    private final ClientMap mapper;
+    private final ClientMapper mapper;
 
-    public ClientService(ClientRepository repository, ClientMap mapper) {
+    public ClientService(ClientRepository repository, ClientMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }

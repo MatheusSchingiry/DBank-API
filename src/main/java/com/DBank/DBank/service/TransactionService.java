@@ -3,7 +3,7 @@ package com.DBank.DBank.service;
 import com.DBank.DBank.Client.Authorize;
 import com.DBank.DBank.DTO.ApiResponse;
 import com.DBank.DBank.DTO.TransactionDTO;
-import com.DBank.DBank.mapper.TransactionMap;
+import com.DBank.DBank.Mapper.TransactionMapper;
 import com.DBank.DBank.Model.ClientModel;
 import com.DBank.DBank.Model.EnterpriseModel;
 import com.DBank.DBank.Model.TransactionModel;
@@ -21,11 +21,11 @@ public class TransactionService {
     private  final ClientRepository clientRepository;
     private final EnterpriseRepository enterpriseRepository;
     private final TransactionRepository repository;
-    private final TransactionMap mapper;
+    private final TransactionMapper mapper;
     private final Authorize authorize;
     private final ObjectMapper objectMapper;
 
-    public TransactionService(ClientRepository clientRepository, EnterpriseRepository enterpriseRepository, TransactionRepository repository, TransactionMap mapper, Authorize authorize, ObjectMapper objectMapper) {
+    public TransactionService(ClientRepository clientRepository, EnterpriseRepository enterpriseRepository, TransactionRepository repository, TransactionMapper mapper, Authorize authorize, ObjectMapper objectMapper) {
         this.clientRepository = clientRepository;
         this.enterpriseRepository = enterpriseRepository;
         this.repository = repository;

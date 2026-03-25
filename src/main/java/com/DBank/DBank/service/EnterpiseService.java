@@ -1,7 +1,7 @@
 package com.DBank.DBank.service;
 
 import com.DBank.DBank.DTO.EnterpriseDTO;
-import com.DBank.DBank.mapper.EnterpriseMap;
+import com.DBank.DBank.Mapper.EnterpriseMapper;
 import com.DBank.DBank.Model.EnterpriseModel;
 import com.DBank.DBank.repository.EnterpriseRepository;
 import org.springframework.stereotype.Service;
@@ -12,9 +12,9 @@ import java.util.UUID;
 public class EnterpiseService {
 
     private final EnterpriseRepository repository;
-    private final EnterpriseMap mapper;
+    private final EnterpriseMapper mapper;
 
-    public EnterpiseService(EnterpriseRepository repository, EnterpriseMap mapper) {
+    public EnterpiseService(EnterpriseRepository repository, EnterpriseMapper mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
