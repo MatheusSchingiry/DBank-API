@@ -1,4 +1,4 @@
-package com.DBank.DBank.dto;
+package com.DBank.DBank.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

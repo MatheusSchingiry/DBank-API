@@ -1,6 +1,6 @@
 package com.DBank.DBank.repository;
 
-import com.DBank.DBank.model.TransactionModel;
+import com.DBank.DBank.Model.TransactionModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

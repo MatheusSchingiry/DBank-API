@@ -1,9 +1,8 @@
 package com.DBank.DBank.service;
 
-import com.DBank.DBank.dto.EnterpriseDTO;
+import com.DBank.DBank.DTO.EnterpriseDTO;
 import com.DBank.DBank.mapper.EnterpriseMap;
-import com.DBank.DBank.mapper.EnterpriseMapper;
-import com.DBank.DBank.model.EnterpriseModel;
+import com.DBank.DBank.Model.EnterpriseModel;
 import com.DBank.DBank.repository.EnterpriseRepository;
 import org.springframework.stereotype.Service;
 

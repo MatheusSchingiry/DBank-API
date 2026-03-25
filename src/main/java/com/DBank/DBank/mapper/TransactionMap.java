@@ -1,12 +1,10 @@
 package com.DBank.DBank.mapper;
 
-import com.DBank.DBank.dto.EnterpriseDTO;
-import com.DBank.DBank.dto.TransactionDTO;
-import com.DBank.DBank.model.ClientModel;
-import com.DBank.DBank.model.EnterpriseModel;
-import com.DBank.DBank.model.TransactionModel;
+import com.DBank.DBank.DTO.TransactionDTO;
+import com.DBank.DBank.Model.ClientModel;
+import com.DBank.DBank.Model.EnterpriseModel;
+import com.DBank.DBank.Model.TransactionModel;
 import com.DBank.DBank.repository.ClientRepository;
-import com.DBank.DBank.repository.TransactionRepository;
 import org.springframework.stereotype.Component;
 
 @Component

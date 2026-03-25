@@ -1,6 +1,6 @@
 package com.DBank.DBank.Controller;
 
-import com.DBank.DBank.dto.EnterpriseDTO;
+import com.DBank.DBank.DTO.EnterpriseDTO;
 import com.DBank.DBank.service.EnterpiseService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;

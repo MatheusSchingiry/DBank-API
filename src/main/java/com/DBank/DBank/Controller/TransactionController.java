@@ -1,6 +1,6 @@
 package com.DBank.DBank.Controller;
 
-import com.DBank.DBank.dto.TransactionDTO;
+import com.DBank.DBank.DTO.TransactionDTO;
 import com.DBank.DBank.service.TransactionService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

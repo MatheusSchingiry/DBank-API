@@ -1,7 +1,7 @@
 package com.DBank.DBank.mapper;
 
-import com.DBank.DBank.dto.ClientDTO;
-import com.DBank.DBank.model.ClientModel;
+import com.DBank.DBank.DTO.ClientDTO;
+import com.DBank.DBank.Model.ClientModel;
 import org.springframework.stereotype.Component;
 
 @Component
