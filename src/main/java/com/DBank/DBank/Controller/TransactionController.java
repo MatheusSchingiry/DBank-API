@@ -1,4 +1,4 @@
-package com.DBank.DBank.controller;
+package com.DBank.DBank.Controller;
 
 import com.DBank.DBank.dto.TransactionDTO;
 import com.DBank.DBank.service.TransactionService;
@@ -17,7 +17,7 @@ public class TransactionController {
         this.service = service;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public TransactionDTO add(@RequestBody TransactionDTO dto){
         return service.Operation(dto);
     }

@@ -1,4 +1,4 @@
-package com.DBank.DBank.controller;
+package com.DBank.DBank.Controller;
 
 import com.DBank.DBank.dto.ClientDTO;
 import com.DBank.DBank.service.ClientService;
@@ -17,21 +17,21 @@ public class ClientController {
         this.service = service;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ClientDTO add(@Valid @RequestBody ClientDTO dto){
         return service.add(dto);
     }
 
-    @GetMapping("/list/{email}")
+    @GetMapping("/{email}")
     public ClientDTO list(@PathVariable String email){
         return service.list(email);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/{id}")
     public ClientDTO edit(@PathVariable UUID id, @Valid @RequestBody ClientDTO dto){
         return service.edit(id, dto);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id){ service.delete(id);}
 }

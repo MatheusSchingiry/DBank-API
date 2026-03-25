@@ -1,4 +1,4 @@
-package com.DBank.DBank.controller;
+package com.DBank.DBank.Controller;
 
 import com.DBank.DBank.dto.EnterpriseDTO;
 import com.DBank.DBank.service.EnterpiseService;
@@ -17,21 +17,21 @@ public class EnterpriseController {
         this.service = service;
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public EnterpriseDTO add(@Valid @RequestBody EnterpriseDTO dto){
         return service.add(dto);
     }
 
-    @GetMapping("/list/{email}")
+    @GetMapping("/{email}")
     public EnterpriseDTO list(@PathVariable String email){
         return service.list(email);
     }
 
-    @PutMapping("/edit/{id}")
+    @PutMapping("/{id}")
     public EnterpriseDTO edit(@PathVariable UUID id, @Valid @RequestBody EnterpriseDTO dto){
         return service.edit(id, dto);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable UUID id){ service.delete(id); }
 }
